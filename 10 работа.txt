@@ -1,0 +1,48 @@
+#include <iostream>
+#include <Windows.h>
+#include <string.h>
+#include <cctype>
+
+#include <iostream>
+#include <Windows.h>
+#include <string.h>
+#include <cctype>
+
+using namespace std;
+int main()
+{
+    //setlocale(LC_ALL, "rus");
+    SetConsoleOutputCP(1251);
+	SetConsoleCP(1251);
+	
+	int len, len2;
+	const int SIZE = 1000;
+	char text[SIZE], text2[SIZE], text3[SIZE];
+
+	cout << "¬ведите текст, в конце поставьте точку." << endl;
+	
+	cin.getline(text, SIZE - 1);
+	len = strlen(text);
+	int j=0;
+	for (int i = 0; i<len; i++) {
+		if ((text[i] == ' ') || (text[i] == '.')) {
+			text2[j] ='\0';
+			len2 = strlen(text2);
+			j = 0;
+			strcpy(text3, text2);
+			if(toupper(text2[0]))
+                	  text2[0] = tolower(text2[0]);
+            		if(toupper(text2[len2-1]))
+                	  text2[len2-1] = tolower(text2[len2-1]);
+			if( (len2!= 1) && (text2[0]==text2[len2-1]) ) {
+				cout<<text3<<endl;
+			}
+			
+		}
+		else { 
+		    text2[j]=text[i];
+		    j++;
+		}
+	}
+	return 0;
+}
